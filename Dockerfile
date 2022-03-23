@@ -36,7 +36,8 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /app
 
+RUN chown pptruser:pptruser /entrypoint.sh && chmod +x /entrypoint.sh
+
 # Run everything after as non-privileged user.
 USER pptruser
-RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
